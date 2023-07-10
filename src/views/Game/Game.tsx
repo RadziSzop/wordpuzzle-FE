@@ -41,6 +41,7 @@ export const Game = () => {
         setGuess={setGuess}
       />
       <WordInput
+        letters={data?.data?.data?.letters}
         words={data.data.data.words}
         guess={guess}
         setGuess={setGuess}

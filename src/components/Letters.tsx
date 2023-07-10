@@ -12,7 +12,16 @@ export const Letters = ({ letters, guess, setGuess }: Props) => {
       transition={{ staggerChildren: 1 }}
     >
       {letters.map((letter, i) => {
-        return <LetterBox letter={letter} key={i} index={i} guess={guess} />;
+        return (
+          <LetterBox
+            letter={letter}
+            setGuess={setGuess}
+            key={i}
+            index={i}
+            guess={guess}
+            letters={letters}
+          />
+        );
       })}
     </motion.div>
   );
