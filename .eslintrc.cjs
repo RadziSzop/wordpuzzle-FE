@@ -18,6 +18,7 @@ module.exports = {
   },
   plugins: ["react-refresh", "@tanstack/eslint-plugin-query"],
   rules: {
+    "@typescript-eslint/no-misused-promises": "off",
     "react-refresh/only-export-components": [
       "warn",
       { allowConstantExport: true },

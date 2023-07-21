@@ -21,7 +21,7 @@ export const LetterBox = ({
 
   return (
     <motion.div
-      className={`w-12  h-16 flex justify-center items-center rounded-lg text-xl text-neutral-300 overflow-hidden transition-all ${
+      className={`w-12 cursor-pointer h-16 flex justify-center items-center rounded-lg text-xl text-neutral-300 overflow-hidden transition-all ${
         occurences >= myIndex
           ? "bg-blue-700 shadow-md scale-105 shadow-zinc-950"
           : "bg-zinc-800 shadow-inner shadow-black "
@@ -40,13 +40,13 @@ export const LetterBox = ({
         <motion.p
           initial={{ y: -50 }}
           animate={{ y: 0 }}
-          exit={{ opacity: 0 }}
+          exit={{ y: 50 }}
           transition={{
             type: "spring",
             delay: index / 10,
             damping: 20,
           }}
-          className="font-bold"
+          className="font-bold select-none"
         >
           {letter.toUpperCase()}
         </motion.p>
