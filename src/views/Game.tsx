@@ -1,14 +1,14 @@
-import { Typewriter } from "react-simple-typewriter";
 import { useQuery } from "@tanstack/react-query";
 import "../index.css";
 import axios from "axios";
 import { Letters } from "../components/Letters";
 import { WordInput } from "../components/WordInput";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { CorrectWords } from "../components/CorrectWords";
 import { AnimatePresence, motion } from "framer-motion";
-import { FaChevronDown, FaQuestionCircle } from "react-icons/fa";
+import { FaChevronDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { settings } from "../utils/settings";
 interface GetGameResponse {
   data: {
     words: string[];
@@ -27,8 +27,7 @@ export const Game = () => {
     // onSuccess: () => {
     //   setStartTimer(Date.now());
     // },
-    queryFn: async () =>
-      await axios.get<GetGameResponse>(`http://localhost:4000`),
+    queryFn: async () => await axios.get<GetGameResponse>(settings.BE_URL),
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
     refetchOnMount: false,
