@@ -32,8 +32,6 @@ export const Game = () => {
     refetchOnReconnect: false,
     refetchOnMount: false,
   });
-  console.log(correctWords.length);
-
   const handleNewGame = async () => {
     await refetch();
     setCorrectWords([]);
@@ -58,7 +56,7 @@ export const Game = () => {
   return (
     <div className="max-w-7xl h-96">
       <AnimatePresence>
-        {correctWords.length < 1 && (
+        {correctWords.length < 10 && (
           <motion.div
             className="flex flex-col"
             initial={{ opacity: 0 }}
@@ -87,7 +85,7 @@ export const Game = () => {
         )}
       </AnimatePresence>
       {/* <AnimatePresence> */}
-      {correctWords.length >= 1 && (
+      {correctWords.length >= 10 && (
         <motion.div
           className="flex flex-col items-center"
           initial={{ opacity: 0, y: -5 }}

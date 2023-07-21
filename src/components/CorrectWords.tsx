@@ -43,7 +43,6 @@ export const CorrectWords = ({ correctWords, setCorrectWords }: Props) => {
               }
               onAnimationComplete={() => {
                 if (isError) {
-                  console.log("aaaa");
                   setCorrectWords((prevState) => {
                     const newState = [...prevState];
                     newState[index].isError = false;
