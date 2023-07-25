@@ -1,91 +1,27 @@
-import { useQuery } from "@tanstack/react-query";
-import "../index.css";
-import axios from "axios";
-import { Letters } from "../components/Letters";
-import { WordInput } from "../components/WordInput";
-import { useState } from "react";
-import { CorrectWords } from "../components/CorrectWords";
 import { AnimatePresence, motion } from "framer-motion";
 import { FaChevronDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { settings } from "../utils/settings";
-interface GetGameResponse {
-  data: {
-    words: string[];
-    letters: string[];
-  };
+import { CorectWord } from "../types/words";
+
+interface Props {
+  correctWords: CorectWord[];
+  words: string[];
+  setShowWords: React.Dispatch<React.SetStateAction<boolean>>;
+  showWords: boolean;
+  handleNewGame: () => Promise<void>;
+  neededScore: number;
 }
-export const Game = () => {
-  const [guess, setGuess] = useState("");
-  const [showWords, setShowWords] = useState(false);
-  // const [startTime, setStartTimer] = useState(Date.now());
-  const [correctWords, setCorrectWords] = useState<
-    { word: string; isError: boolean }[]
-  >([]);
-  const { isLoading, isError, error, data, refetch } = useQuery({
-    queryKey: ["game"],
-    // onSuccess: () => {
-    //   setStartTimer(Date.now());
-    // },
-    queryFn: async () => await axios.get<GetGameResponse>(settings.BE_URL),
-    refetchOnWindowFocus: false,
-    refetchOnReconnect: false,
-    refetchOnMount: false,
-  });
-  const handleNewGame = async () => {
-    await refetch();
-    setCorrectWords([]);
-  };
-  if (isLoading) {
-    return (
-      <AnimatePresence>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-        >
-          Loading...
-        </motion.p>
-      </AnimatePresence>
-    );
-  }
-  if (isError) {
-    console.log(error);
-    return <p>Error occured</p>;
-  }
+export const FinishScreen = ({
+  correctWords,
+  words,
+  setShowWords,
+  showWords,
+  neededScore,
+  handleNewGame,
+}: Props) => {
   return (
-    <div className="max-w-7xl h-96">
-      <AnimatePresence>
-        {correctWords.length < 10 && (
-          <motion.div
-            className="flex flex-col"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0, y: 5 }}
-          >
-            {/* {data.data.data.words.length} */}
-            <Letters
-              letters={data?.data?.data?.letters}
-              guess={guess}
-              setGuess={setGuess}
-            />
-            <WordInput
-              correctWords={correctWords}
-              letters={data?.data?.data?.letters}
-              words={data.data.data.words}
-              guess={guess}
-              setGuess={setGuess}
-              setCorrectWords={setCorrectWords}
-            />
-            <CorrectWords
-              correctWords={correctWords}
-              setCorrectWords={setCorrectWords}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
-      {/* <AnimatePresence> */}
-      {correctWords.length >= 10 && (
+    <AnimatePresence>
+      {correctWords.length >= neededScore && (
         <motion.div
           className="flex flex-col items-center"
           initial={{ opacity: 0, y: -5 }}
@@ -133,7 +69,7 @@ export const Game = () => {
           <motion.div className="w-72 flex flex-wrap justify-center gap-2 max-h-72 overflow-auto scroll pr-1">
             <AnimatePresence>
               {showWords &&
-                data.data.data.words.map((word, index) => {
+                words.map((word, index) => {
                   return (
                     <motion.span
                       key={word}
@@ -145,8 +81,7 @@ export const Game = () => {
                       exit={{
                         opacity: 0,
                         transition: {
-                          delay:
-                            0.03 * data.data.data.words.length - index * 0.03,
+                          delay: 0.03 * words.length - index * 0.03,
                         },
                       }}
                       className={`h-10 text-lg text-left block  pt-1.5 font-medium px-4 bg-zinc-800 align-middle rounded-lg ${
@@ -165,7 +100,6 @@ export const Game = () => {
           </motion.div>
         </motion.div>
       )}
-      {/* </AnimatePresence> */}
-    </div>
+    </AnimatePresence>
   );
 };
