@@ -3,6 +3,7 @@ import { CorrectWords } from "./CorrectWords";
 import { Letters } from "./Letters";
 import { WordInput } from "./WordInput";
 import { CorectWord } from "../types/words";
+import { ProgressBar } from "./ProgressBar";
 interface Props {
   letters: string[];
   guess: string;
@@ -40,6 +41,11 @@ export const Game = ({
             guess={guess}
             setGuess={setGuess}
             setCorrectWords={setCorrectWords}
+          />
+          <ProgressBar
+            progress={correctWords.length}
+            neededScore={neededScore}
+            containerClasses="mt-5"
           />
           <CorrectWords
             correctWords={correctWords}
