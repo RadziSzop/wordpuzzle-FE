@@ -52,7 +52,8 @@ export const Modal = ({ word, setModal }: Props) => {
           />
         ) : isError ? (
           <motion.p className="text-red-700 text-2xl">
-            {(error as AxiosError<GetDefinitionsError>).response?.data.message}
+            {(error as AxiosError<GetDefinitionsError>).response?.data
+              .message || "Error occured, try again later"}
           </motion.p>
         ) : (
           data.data.data.map((definition, index) => {
