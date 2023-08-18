@@ -1,29 +1,21 @@
 import { motion } from "framer-motion";
 import { Fragment } from "react";
 import { Typewriter } from "react-simple-typewriter";
+import { CorectWord } from "../types/words";
 interface Props {
-  setCorrectWords: React.Dispatch<
-    React.SetStateAction<
-      {
-        word: string;
-        isError: boolean;
-      }[]
-    >
-  >;
-  correctWords: {
-    word: string;
-    isError: boolean;
-  }[];
+  setCorrectWords: React.Dispatch<React.SetStateAction<CorectWord[]>>;
+  correctWords: CorectWord[];
 }
 
 export const CorrectWords = ({ correctWords, setCorrectWords }: Props) => {
   return (
-    <div className="mx-auto w-[28rem]  gap-2 flex-wrap flex items-start  justify-center mt-2">
+    <motion.div className="mx-auto w-[28rem]  gap-2 flex-wrap flex items-start  justify-center mt-2">
       {/* {correctWords.length} */}
       {correctWords.map(({ word, isError }, index) => {
         return (
           <Fragment key={index}>
             <motion.p
+              layout
               className="h-10 text-lg text-left block  pt-1.5 font-medium px-4 bg-zinc-800 align-middle rounded-lg"
               animate={
                 isError
@@ -56,6 +48,6 @@ export const CorrectWords = ({ correctWords, setCorrectWords }: Props) => {
           </Fragment>
         );
       })}
-    </div>
+    </motion.div>
   );
 };

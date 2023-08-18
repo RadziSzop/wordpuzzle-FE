@@ -61,7 +61,7 @@ export const WordInput = ({
       type="text"
       variants={inputVariants}
       animate={animationControler}
-      className="border-0, border-b-zinc-700 border-b-2 bg-transparent outline-none tracking-widest text-3xl mt-8 focus:border-red-500 transition-colors duration-300 mx-auto px-2 pb-2 w-[28rem]"
+      className="border-0, border-b-zinc-700 border-b-2 bg-transparent outline-none tracking-widest text-3xl mt-8 focus:border-neutral-500 transition-colors duration-300 mx-auto px-2 pb-2 w-[28rem]"
       onKeyDown={handleEnter}
       transition={{ type: "tween", duration: 0.8 }}
       onChange={(e) => {
