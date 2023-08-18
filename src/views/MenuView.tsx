@@ -3,7 +3,7 @@ import { BsSquareHalf } from "react-icons/bs";
 import { IoDice } from "react-icons/io5";
 import { MenuButton } from "../components/MenuButton";
 import { IconType } from "react-icons/lib/esm/iconBase";
-import { AnimatedText } from "../components/animatedText";
+import { AnimatedText } from "../components/AnimatedText";
 
 export const MenuView = () => {
   return (
