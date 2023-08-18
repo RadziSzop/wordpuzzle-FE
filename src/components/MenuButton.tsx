@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { State } from "../types/game";
 import { twMerge } from "tailwind-merge";
 import { IconType } from "react-icons/lib/esm/iconBase";
+import { getIsTouchScreen } from "../utils/getIsTouchScreen";
 interface Props {
   text: string;
   linkTo: string;
@@ -20,7 +21,8 @@ export const MenuButton = ({
   textClasses,
   Icon,
 }: Props) => {
-  const [hoverState, setHoverState] = useState(false);
+  const isTouchScreen = getIsTouchScreen();
+  const [hoverState, setHoverState] = useState(isTouchScreen);
   const containerClassesDefault = twMerge(
     "w-full flex-grow px-4 py-8 text-2xl shadow-lg flex justify-center items-center hover:shadow-2xl hover:shadow-black hover:text-neutral-200 transition duration-300",
     containerClasses
@@ -31,9 +33,11 @@ export const MenuButton = ({
       state={state}
       className="w-1/2"
       onMouseEnter={() => {
+        if (isTouchScreen) return;
         setHoverState(true);
       }}
       onMouseLeave={() => {
+        if (isTouchScreen) return;
         setHoverState(false);
       }}
     >

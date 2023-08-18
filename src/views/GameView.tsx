@@ -31,6 +31,7 @@ export const GameView = () => {
   });
   const handleNewGame = async () => {
     await refetch();
+    setGuess("");
     setCorrectWords([]);
   };
   if (isLoading) {
@@ -56,7 +57,7 @@ export const GameView = () => {
       ? data.data.data.words.length
       : 10;
   return (
-    <div className="max-w-7xl h-96">
+    <div className="md:w-[50rem] h-96">
       <Game
         correctWords={correctWords}
         guess={guess}

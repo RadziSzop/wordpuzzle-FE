@@ -2,6 +2,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FaChevronDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { CorectWord } from "../types/words";
+import { useState } from "react";
+import { Modal } from "./Modal";
 
 interface Props {
   correctWords: CorectWord[];
@@ -19,6 +21,8 @@ export const FinishScreen = ({
   neededScore,
   handleNewGame,
 }: Props) => {
+  const [modal, setModal] = useState<string>();
+
   return (
     <AnimatePresence>
       {correctWords.length >= neededScore && (
@@ -72,7 +76,7 @@ export const FinishScreen = ({
                 words.map((word, index) => {
                   return (
                     <motion.span
-                      key={word}
+                      key={index}
                       initial={{ opacity: 0 }}
                       animate={{
                         opacity: 1,
@@ -84,7 +88,10 @@ export const FinishScreen = ({
                           delay: 0.03 * words.length - index * 0.03,
                         },
                       }}
-                      className={`h-10 text-lg text-left block  pt-1.5 font-medium px-4 bg-zinc-800 align-middle rounded-lg ${
+                      onClick={() => {
+                        setModal(word);
+                      }}
+                      className={`cursor-pointer h-10 text-lg text-left block  pt-1.5 font-medium px-4 bg-zinc-800 align-middle rounded-lg ${
                         correctWords.some(
                           (correctWord) => correctWord.word === word
                         )
@@ -100,6 +107,10 @@ export const FinishScreen = ({
           </motion.div>
         </motion.div>
       )}
+      ``
+      <AnimatePresence>
+        {modal && <Modal word={modal} setModal={setModal} />}
+      </AnimatePresence>
     </AnimatePresence>
   );
 };

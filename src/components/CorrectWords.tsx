@@ -1,19 +1,10 @@
 import { motion } from "framer-motion";
 import { Fragment } from "react";
 import { Typewriter } from "react-simple-typewriter";
+import { CorectWord } from "../types/words";
 interface Props {
-  setCorrectWords: React.Dispatch<
-    React.SetStateAction<
-      {
-        word: string;
-        isError: boolean;
-      }[]
-    >
-  >;
-  correctWords: {
-    word: string;
-    isError: boolean;
-  }[];
+  setCorrectWords: React.Dispatch<React.SetStateAction<CorectWord[]>>;
+  correctWords: CorectWord[];
 }
 
 export const CorrectWords = ({ correctWords, setCorrectWords }: Props) => {

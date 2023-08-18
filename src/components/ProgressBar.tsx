@@ -32,6 +32,7 @@ export const ProgressBar = ({
           exit={{
             opacity: 0,
           }}
+          transition={{ type: "spring", bounce: 0.25 }}
           className=""
         ></motion.div>
       </div>
