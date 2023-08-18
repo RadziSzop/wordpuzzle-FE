@@ -4,7 +4,6 @@ import { Letters } from "./Letters";
 import { WordInput } from "./WordInput";
 import { CorectWord } from "../types/words";
 import { ProgressBar } from "./ProgressBar";
-import { Modal } from "./Modal";
 interface Props {
   letters: string[];
   guess: string;
