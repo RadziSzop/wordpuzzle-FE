@@ -28,7 +28,7 @@ export const Game = ({
       {correctWords.length < neededScore && (
         <motion.div
           className="flex flex-col"
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 0.01 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0, y: 5 }}
         >

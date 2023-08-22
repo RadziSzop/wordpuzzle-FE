@@ -28,7 +28,7 @@ export const FinishScreen = ({
       {correctWords.length >= neededScore && (
         <motion.div
           className="flex flex-col items-center"
-          initial={{ opacity: 0, y: -5 }}
+          initial={{ opacity: 0.01, y: -5 }}
           animate={{ opacity: 1, y: 0, transition: { delay: 0.5 } }}
         >
           <div className="w-full flex flex-col justify-center">
@@ -77,7 +77,7 @@ export const FinishScreen = ({
                   return (
                     <motion.span
                       key={index}
-                      initial={{ opacity: 0 }}
+                      initial={{ opacity: 0.01 }}
                       animate={{
                         opacity: 1,
                         transition: { delay: index * 0.03 },

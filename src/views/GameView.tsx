@@ -37,7 +37,7 @@ export const GameView = () => {
   if (isLoading) {
     return (
       <motion.img
-        initial={{ opacity: 0 }}
+        initial={{ opacity: 0.01 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
         src={loading}

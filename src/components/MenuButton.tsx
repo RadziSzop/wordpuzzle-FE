@@ -42,7 +42,7 @@ export const MenuButton = ({
       }}
     >
       <motion.button
-        initial={{ opacity: 0 }}
+        initial={{ opacity: 0.01 }}
         animate={{ opacity: 1 }}
         className={containerClassesDefault}
       >

@@ -32,7 +32,7 @@ export const Modal = ({ word, setModal }: Props) => {
       <motion.div
         layout
         className="cursor-default w-11/12 max-w-max break-words p-4 flex flex-col justify-center items-center bg-neutral-800 rounded-lg border-1 border-solid border-neutral-700"
-        initial={{ opacity: 0 }}
+        initial={{ opacity: 0.01 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
@@ -43,7 +43,7 @@ export const Modal = ({ word, setModal }: Props) => {
         )}
         {isLoading ? (
           <motion.img
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 0.01 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
             src={loading}
