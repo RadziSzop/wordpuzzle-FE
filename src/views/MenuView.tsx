@@ -3,19 +3,20 @@ import { BsSquareHalf } from "react-icons/bs";
 import { IoDice } from "react-icons/io5";
 import { MenuButton } from "../components/MenuButton";
 import { IconType } from "react-icons/lib/esm/iconBase";
-import { AnimatedText } from "../components/AnimatedText";
+// import { AnimatedText } from "../components/AnimatedText";
 
 export const MenuView = () => {
   return (
     <>
-      <div className="bg-[#0b0b0b] p-4  mb-4 rounded-3xl w-full">
-        <AnimatedText
+      <div className=" p-4  mb-6 rounded-full w-full">
+        {/* <AnimatedText
           textClasses="text-8xl font-bold "
           colorFrom="#171717"
           colorTo="#171717"
         >
-          Word Gay
-        </AnimatedText>
+         
+        </AnimatedText> */}
+        <h1 className="text-6xl font-bold text-neutral-300">LAME GAME</h1>
       </div>
       <div className="w-[28rem] mx-auto">
         <MenuButton
